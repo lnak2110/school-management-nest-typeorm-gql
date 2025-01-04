@@ -1,0 +1,67 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Student {
+  id: Int!
+  name: String!
+  classId: Int!
+  class: Class!
+}
+
+type Class {
+  id: Int!
+  name: String!
+  students: [Student!]!
+}
+
+type Query {
+  classes: [Class!]!
+  classesByName(nameInput: NameInput!): [Class!]!
+  class(idInput: IdInput!): Class!
+  students: [Student!]!
+  studentsByName(nameInput: NameInput!): [Student!]!
+  studentsByClassName(classNameInput: ClassNameInput!): [Student!]!
+  student(idInput: IdInput!): Student!
+}
+
+input NameInput {
+  keyword: String!
+}
+
+input IdInput {
+  id: Int!
+}
+
+input ClassNameInput {
+  className: String!
+}
+
+type Mutation {
+  createClass(createClassInput: CreateClassInput!): Class!
+  updateClass(updateClassInput: UpdateClassInput!): Class!
+  removeClass(idInput: IdInput!): Class!
+  createStudent(createStudentInput: CreateStudentInput!): Student!
+  updateStudent(updateStudentInput: UpdateStudentInput!): Student!
+  removeStudent(idInput: IdInput!): Student!
+}
+
+input CreateClassInput {
+  name: String!
+}
+
+input UpdateClassInput {
+  name: String
+  id: Int!
+}
+
+input CreateStudentInput {
+  name: String!
+  classId: Int!
+}
+
+input UpdateStudentInput {
+  name: String
+  classId: Int
+  id: Int!
+}
